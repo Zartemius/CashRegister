@@ -50,11 +50,10 @@
 
     </LinearLayout>
 
-
-
-    <ImageView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/main_activity__productsInReceipt_recycle_view"
         android:layout_width="match_parent"
-        android:layout_height="310dp" />
+        android:layout_height="310dp"/>
 
 <LinearLayout
     android:layout_width="match_parent"
