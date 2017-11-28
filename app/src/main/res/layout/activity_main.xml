@@ -7,14 +7,32 @@
     android:background="#EEEEEE"
     android:orientation="vertical">
 
-<EditText
-    android:id="@+id/main_activty__search_view"
+<LinearLayout
     android:layout_width="match_parent"
-    android:layout_marginTop="15dp"
-    android:layout_height="40dp" />
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <EditText
+        android:id="@+id/main_activty__search_view"
+        android:layout_width="280dp"
+        android:layout_marginTop="15dp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="2dp"
+        android:layout_marginLeft="5dp"/>
+
+    <Button
+        android:id="@+id/main_activity__button_add_product_in_list"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="2dp"
+        android:text="Add"/>
+
+
+</LinearLayout>
 
     <LinearLayout
-        android:id="@+id/main_activity__button_add_product"
+        android:id="@+id/main_activity__button_add_free_product"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginRight="10dp"
@@ -53,7 +71,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/main_activity__productsInReceipt_recycle_view"
         android:layout_width="match_parent"
-        android:layout_height="310dp"/>
+        android:layout_height="300dp"/>
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -65,6 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft ="10dp"
+        android:layout_marginTop="5dp"
         android:textSize="15sp"
         android:text="Итого"/>
     <TextView
@@ -73,6 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_weight="1"
+        android:layout_marginTop="5dp"
         android:textSize="25sp"
         android:text="154 руб"/>
     <Button
