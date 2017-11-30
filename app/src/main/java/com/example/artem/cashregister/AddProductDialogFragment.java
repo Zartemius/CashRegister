@@ -7,6 +7,7 @@ import android.support.v4.app.DialogFragment;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.artem.cashregister.data.Product;
@@ -19,9 +20,9 @@ public class AddProductDialogFragment extends DialogFragment {
     }
 
     private Listener mListener;
-    private TextView productName;
-    private TextView productPrice;
-    private TextView productCode;
+    private EditText productName;
+    private EditText productPrice;
+    private EditText productCode;
 
         @NonNull
         public Dialog onCreateDialog(Bundle savedInctanceState){
@@ -33,10 +34,13 @@ public class AddProductDialogFragment extends DialogFragment {
                     setPositiveButton("Ок",okclickListener).
                     create();
 
-            productName = (TextView) result.findViewById(R.id.dialog_add_product_in_list_user_input_name);
-            productPrice = (TextView) result.findViewById(R.id.dialog_add_product_in_list_user_input_price);
-            productCode = (TextView) result.findViewById(R.id.dialog_add_product_in_list_user_input_code);
+
+            productName = (EditText) result.findViewById(R.id.dialog_add_product_in_list_user_input_name);
+            productPrice = (EditText) result.findViewById(R.id.dialog_add_product_in_list_user_input_price);
+            productCode = (EditText) result.findViewById(R.id.dialog_add_product_in_list_user_input_code);
+
             return result;
+
         }
 
     @Override
