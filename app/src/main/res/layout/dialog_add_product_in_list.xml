@@ -19,6 +19,7 @@
             android:text="Product" />
 
         <EditText
+            android:id="@+id/dialog_add_product_in_list_user_input_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
@@ -38,6 +39,7 @@
             android:text="Price" />
 
         <EditText
+            android:id="@+id/dialog_add_product_in_list_user_input_price"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
@@ -58,6 +60,7 @@
                 android:text="Code" />
 
             <EditText
+                android:id="@+id/dialog_add_product_in_list_user_input_code"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>

@@ -22,17 +22,14 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
     }
 
     private final TextView name;
-    private final ImageView image;
 
     private ProductViewHolder(View itemView) {
         super(itemView);
         name = itemView.findViewById(R.id.product_view_holder_name);
-        image = itemView.findViewById(R.id.product_view_holder_image);
     }
 
     public void setProduct(Product product){
         name.setText(product.name);
-        name.setText(product.image);
     }
 
 }

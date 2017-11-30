@@ -9,19 +9,19 @@ implements ProductsModel.Listener{
         private final ProductsModel model;
 
         public ProductAdapter(ProductsModel model){
-            this.model = model;
-            model.addListener(this);
+                this.model = model;
+                model.addListener(this);
         }
 
         @Override
         public ProductViewHolder onCreateViewHolder (ViewGroup parent, int ViewType){
-            return ProductViewHolder.create(parent.getContext(),parent);
+                return ProductViewHolder.create(parent.getContext(),parent);
         }
 
         @Override
-        public void onBindViewHolder(ProductViewHolder holder, int position) {
-        Product product = model.getProduct(position);
-        holder.setProduct(product);
+        public void onBindViewHolder(ProductViewHolder holder, int position){
+                Product product = model.getProduct(position);
+                holder.setProduct(product);
         }
 
         @Override

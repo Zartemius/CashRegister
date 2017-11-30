@@ -39,6 +39,7 @@
         android:layout_marginLeft="10dp"
         android:background="#FFFFFF"
         android:clickable="true"
+        android:focusable="true"
         android:orientation="horizontal">
 
         <ImageView
@@ -71,7 +72,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/main_activity__productsInReceipt_recycle_view"
         android:layout_width="match_parent"
-        android:layout_height="300dp"/>
+        android:layout_height="300dp" />
 
 <LinearLayout
     android:layout_width="match_parent"
