@@ -8,7 +8,6 @@ public class ProductInReceipt {
     Product product;
 
     public ProductInReceipt(double quantity, Product product){
-
         this.quantity = quantity;
         this.product = product;
     }
