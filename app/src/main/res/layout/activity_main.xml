@@ -3,109 +3,12 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:background="#EEEEEE"
-    android:orientation="vertical">
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <EditText
-        android:id="@+id/main_activty__search_view"
-        android:layout_width="280dp"
-        android:layout_marginTop="15dp"
-        android:layout_height="match_parent"
-        android:layout_marginRight="2dp"
-        android:layout_marginLeft="5dp"/>
-
-    <Button
-        android:id="@+id/main_activity__button_add_product_in_list"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="2dp"
-        android:text="Add"/>
-
-
-</LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/main_activity__button_add_free_product"
+    android:layout_width="match_parent">
+    <fragment
+        android:name="com.example.artem.cashregister.Fragments.SaleFragment"
+        android:id="@+id/main_activity__container_for_sale_fragment"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:background="#FFFFFF"
-        android:clickable="true"
-        android:focusable="true"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"/>
 
-        <ImageView
-            android:id="@+id/main_activity__image_on_button"
-            android:layout_width="80dp"
-            android:layout_height="90dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/products_icon"/>
-
-        <TextView
-            android:id="@+id/main_acitvity__text_on_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="30dp"
-            android:textColor="#000000"
-            android:text="Свободный товар в чеке"/>
-
-        <ImageView
-            android:id="@+id/main_acitvity__imagePlus_on_button"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/add_icon" />
-
-    </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/main_activity__productsInReceipt_recycle_view"
-        android:layout_width="match_parent"
-        android:layout_height="300dp" />
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:orientation="horizontal">
-
-    <TextView
-        android:id="@+id/main_activity__word_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft ="10dp"
-        android:layout_marginTop="5dp"
-        android:textSize="15sp"
-        android:text="Итого"/>
-    <TextView
-        android:id="@+id/main_activity__result_figure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_weight="1"
-        android:layout_marginTop="5dp"
-        android:textSize="25sp"
-        android:text="154 руб"/>
-    <Button
-        android:id="@+id/main_activity__button_calculation"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="3dp"
-        android:background="#2196F3"
-        android:text = "Расчёт"
-        android:textColor="#FFFFFF"/>
-
-</LinearLayout>
 
 </LinearLayout>
