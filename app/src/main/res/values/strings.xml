@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">CashRegister</string>
     <string name="title">Add a new Product</string>
+    <string name="Goods">ТОВАРЫ</string>
+    <string name="Receipt">ЧЕК</string>
+    <string name="action_settings">Settings</string>
 </resources>
