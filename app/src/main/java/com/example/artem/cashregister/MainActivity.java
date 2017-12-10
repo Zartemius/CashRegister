@@ -1,5 +1,7 @@
 package com.example.artem.cashregister;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.drm.DrmStore;
 import android.support.v7.app.ActionBar;
 import android.app.FragmentManager;
@@ -9,17 +11,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import com.example.artem.cashregister.Fragments.AddProductDialogFragment;
-import com.example.artem.cashregister.Fragments.SaleFragment;
+import com.example.artem.cashregister.fragments.AddProductDialogFragment;
+import com.example.artem.cashregister.fragments.SaleFragment;
 import com.example.artem.cashregister.data.Product;
 import com.example.artem.cashregister.data.ProductAdapter;
 import com.example.artem.cashregister.data.ProductsModel;
 
-public class MainActivity extends AppCompatActivity implements AddProductDialogFragment.Listener,
+public class MainActivity extends BaseActivity implements AddProductDialogFragment.Listener,
         SaleFragment.SaleFragmentListener,ActionBar.TabListener {
 
     private final ProductsModel productModel= new ProductsModel();
@@ -29,7 +32,11 @@ public class MainActivity extends AppCompatActivity implements AddProductDialogF
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        @SuppressLint("InflateParams")
+        View contentView = inflater.inflate(R.layout.activity_main, null, false);
+        drawer.addView(contentView, 0);
 
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);

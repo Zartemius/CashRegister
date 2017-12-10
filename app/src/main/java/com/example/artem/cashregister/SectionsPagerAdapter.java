@@ -4,7 +4,7 @@ package com.example.artem.cashregister;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import com.example.artem.cashregister.Fragments.SaleFragment;
+import com.example.artem.cashregister.fragments.SaleFragment;
 
 import java.util.Locale;
 

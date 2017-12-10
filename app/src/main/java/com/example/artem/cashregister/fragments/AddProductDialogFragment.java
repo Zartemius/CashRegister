@@ -1,4 +1,4 @@
-package com.example.artem.cashregister.Fragments;
+package com.example.artem.cashregister.fragments;
 
 import android.app.Activity;
 import android.app.AlertDialog;
