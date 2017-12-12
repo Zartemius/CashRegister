@@ -5,14 +5,27 @@ import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class ProductsDataBase extends AppCompatActivity {
+import com.example.artem.cashregister.fragments.AddProductDialogFragment;
+import com.example.artem.cashregister.fragments.SaleFragment;
+import com.example.artem.cashregister.data.Product;
+import com.example.artem.cashregister.data.ProductsModel;
 
+public class SaleActivity extends AppCompatActivity implements AddProductDialogFragment.Listener,
+        SaleFragment.SaleFragmentListener,ActionBar.TabListener {
+
+    private final ProductsModel productModel= new ProductsModel();
+    SectionsPagerAdapter mSectionsPagerAdapter;
+    ViewPager mViewPager;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private CharSequence mDrawerTitle;
@@ -21,7 +34,27 @@ public class ProductsDataBase extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_products_data_base);
+        setContentView(R.layout.activity_sale);
+
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+
+        mViewPager = (ViewPager) findViewById(R.id.pager);
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+
+        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
+            @Override
+            public void onPageSelected(int position) {
+                actionBar.setSelectedNavigationItem(position);
+            }
+        });
+
+        for(int i = 0; i<mSectionsPagerAdapter.getCount(); i++){
+            actionBar.addTab(actionBar.newTab().setText(mSectionsPagerAdapter.getPageTitle(i)).setTabListener(this));
+        }
+
         NavigationView navigationView = findViewById(R.id.navigation);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -29,14 +62,13 @@ public class ProductsDataBase extends AppCompatActivity {
 
                 int id = item.getItemId();
                 if(id == R.id.nav_sale){
-                    Intent intent = new Intent(ProductsDataBase.this, SaleActivity.class);
-                    ProductsDataBase.this.startActivity(intent);
+                    Intent intent = new Intent(SaleActivity.this, SaleActivity.class);
+                    SaleActivity.this.startActivity(intent);
 
                 }
                 else if (id == R.id.nav_goodsBase){
-                    Intent intent = new Intent(ProductsDataBase.this, ProductsDataBase.class);
-                    ProductsDataBase.this.startActivity(intent);
-
+                    Intent intent = new Intent(SaleActivity.this, ProductsDataBase.class);
+                    SaleActivity.this.startActivity(intent);
                 }
                 return true;
             }
@@ -68,6 +100,8 @@ public class ProductsDataBase extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+
     }
 
     @Override
@@ -83,16 +117,63 @@ public class ProductsDataBase extends AppCompatActivity {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Pass the event to ActionBarDrawerToggle, if it returns
-        // true, then it has handled the app icon touch event
+
+        int id = item.getItemId();
+        if(id == R.id.action_settings){
+            return true;
+        }
+
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        // Handle your other action bar items...
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+        mViewPager.setCurrentItem(tab.getPosition());
+    }
+
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+    }
+
+    @Override
+    public ProductsModel getProductsModel() {
+        return productModel;
+    }
+
+    @Override
+    public void requestAddDialogFragment() {
+        openDialog();
+    }
+
+    @Override
+    public void addProduct(Product product) {
+        productModel.addProduct(product);
+    }
+
+    private void openDialog() {
+        AddProductDialogFragment addProductDialogFragment = new AddProductDialogFragment();
+        addProductDialogFragment.show(getSupportFragmentManager(),"Add product dialog");
     }
 }
 

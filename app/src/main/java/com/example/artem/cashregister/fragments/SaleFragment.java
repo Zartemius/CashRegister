@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import com.example.artem.cashregister.MainActivity;
+
 import com.example.artem.cashregister.R;
 import com.example.artem.cashregister.data.ProductAdapter;
 import com.example.artem.cashregister.data.ProductsModel;
