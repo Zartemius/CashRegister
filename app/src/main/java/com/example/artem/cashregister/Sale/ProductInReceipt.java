@@ -1,6 +1,4 @@
-package com.example.artem.cashregister.data;
-
-import com.example.artem.cashregister.data.Product;
+package com.example.artem.cashregister.Sale;
 
 public class ProductInReceipt {
 

@@ -10,14 +10,27 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="100dp"
-    android:layout_height="100dp">
+    android:layout_height="100dp"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/product_view_holder_name"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/activity_products_data_base__toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="hello world"/>
+        android:layout_height="?attr/actionBarSize"
+        android:background="#673AB7" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/activity_products_data_base__recycle_view"
+        android:layout_width="match_parent"
+        android:layout_height="450dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/activity_products_data_base__floating_button"
+        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/add_button"/>
 
 </LinearLayout>
 

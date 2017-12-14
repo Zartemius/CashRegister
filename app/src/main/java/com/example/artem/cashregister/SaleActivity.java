@@ -15,13 +15,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.artem.cashregister.baseOfProducts.ProductsDataBase;
 import com.example.artem.cashregister.fragments.AddProductDialogFragment;
 import com.example.artem.cashregister.fragments.SaleFragment;
-import com.example.artem.cashregister.data.Product;
-import com.example.artem.cashregister.data.ProductsModel;
+import com.example.artem.cashregister.baseOfProducts.ProductsModel;
 
-public class SaleActivity extends AppCompatActivity implements AddProductDialogFragment.Listener,
+public class SaleActivity extends AppCompatActivity implements
         SaleFragment.SaleFragmentListener,ActionBar.TabListener {
+
+    //AddProductDialogFragment.Listener
 
     private final ProductsModel productModel= new ProductsModel();
     SectionsPagerAdapter mSectionsPagerAdapter;
@@ -166,10 +168,10 @@ public class SaleActivity extends AppCompatActivity implements AddProductDialogF
         openDialog();
     }
 
-    @Override
-    public void addProduct(Product product) {
-        productModel.addProduct(product);
-    }
+    //@Override
+    //public void addProduct(Product product) {
+       // productModel.addProduct(product);
+    //}
 
     private void openDialog() {
         AddProductDialogFragment addProductDialogFragment = new AddProductDialogFragment();

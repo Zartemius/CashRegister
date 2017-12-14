@@ -4,16 +4,13 @@ import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.artem.cashregister.R;
-import com.example.artem.cashregister.data.ProductAdapter;
-import com.example.artem.cashregister.data.ProductsModel;
+import com.example.artem.cashregister.baseOfProducts.ProductsModel;
 
 public class SaleFragment extends Fragment {
 
@@ -32,11 +29,12 @@ public class SaleFragment extends Fragment {
         Button addProductButton = (Button) view.findViewById(R.id.fragment_sale__button_add_product_in_list);
         addProductButton.setOnClickListener(new OnAddClicked());
 
+        /*
         ProductAdapter productAdapter = new ProductAdapter(mListener.getProductsModel());
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_sale__productsInReceipt_recycle_view);
         recyclerView.setAdapter(productAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),4));
-
+        */
         return view;
     }
 

@@ -1,4 +1,4 @@
-package com.example.artem.cashregister.data;
+package com.example.artem.cashregister.Sale;
 
 public class Product {
 

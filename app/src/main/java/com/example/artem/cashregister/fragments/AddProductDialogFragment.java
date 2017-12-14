@@ -1,20 +1,17 @@
 package com.example.artem.cashregister.fragments;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v4.app.DialogFragment;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.artem.cashregister.R;
-import com.example.artem.cashregister.data.Product;
+import com.example.artem.cashregister.Sale.Product;
 
 public class AddProductDialogFragment extends DialogFragment {
 
