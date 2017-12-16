@@ -17,7 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.artem.cashregister.R;
-import com.example.artem.cashregister.SaleActivity;
+import com.example.artem.cashregister.Sale.SaleActivity;
 import com.example.artem.cashregister.dataBase.AppDataBase;
 import com.example.artem.cashregister.dataBase.Product;
 

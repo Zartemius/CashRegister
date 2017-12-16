@@ -3,13 +3,14 @@ package com.example.artem.cashregister.baseOfProducts;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.example.artem.cashregister.Sale.fragments.receipt.ProductInReceiptModel;
 import com.example.artem.cashregister.dataBase.Product;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder>
-implements ProductsModel.Listener {
+implements ProductInReceiptModel.Listener {
 
         List<Product> products = new ArrayList<>();
         private String name;

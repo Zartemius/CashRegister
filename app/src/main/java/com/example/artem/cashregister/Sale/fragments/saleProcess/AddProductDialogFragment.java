@@ -1,4 +1,4 @@
-package com.example.artem.cashregister.fragments;
+package com.example.artem.cashregister.Sale.fragments.saleProcess;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -11,18 +11,19 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.artem.cashregister.R;
-import com.example.artem.cashregister.Sale.Product;
+import com.example.artem.cashregister.Sale.fragments.receipt.ProductInReceipt;
+import com.example.artem.cashregister.dataBase.Product;
 
 public class AddProductDialogFragment extends DialogFragment {
 
-    public interface Listener{
-        void addProduct(Product product);
+    public interface AddProductDialogFragmentListener{
+        void addProduct(ProductInReceipt productInReceipt);
+        Product findProductInDataBase(String nameOfProduct);
     }
 
-    private Listener mlistener;
+    private AddProductDialogFragmentListener mlistener;
     private EditText productName;
-    private EditText productPrice;
-    private EditText productCode;
+    Product productFromDataBase;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -34,18 +35,16 @@ public class AddProductDialogFragment extends DialogFragment {
 
         result.setTitle("Add a product")
                 .setView(view)
-                .setPositiveButton("Ок", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Искать", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String name  = productName.getText().toString();
-                        String price = productPrice.getText().toString();
-                        String code = productCode.getText().toString();
-                        Double parsedPrice = Double.parseDouble(price);
-                        Product product = new Product(name,code,parsedPrice);
-                        mlistener.addProduct(product);
+                        productFromDataBase = mlistener.findProductInDataBase(name);
+                        ProductInReceipt productForAddingToReceipt = new ProductInReceipt(productFromDataBase);
+                        mlistener.addProduct(productForAddingToReceipt);
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -53,8 +52,6 @@ public class AddProductDialogFragment extends DialogFragment {
                 });
 
         productName = view.findViewById(R.id.dialog_add_product_in_list_user_input_name);
-        productPrice = view.findViewById(R.id.dialog_add_product_in_list_user_input_price);
-        productCode = view.findViewById(R.id.dialog_add_product_in_list_user_input_code);
 
         return result.create();
     }
@@ -62,6 +59,9 @@ public class AddProductDialogFragment extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mlistener = (Listener) context;
+       mlistener = (AddProductDialogFragmentListener) context;
     }
+
 }
+
+

@@ -1,4 +1,4 @@
-package com.example.artem.cashregister.fragments;
+package com.example.artem.cashregister.Sale.fragments.saleProcess;
 
 import android.support.v4.app.Fragment;
 import android.content.Context;
@@ -8,15 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.artem.cashregister.R;
-import com.example.artem.cashregister.baseOfProducts.ProductsModel;
+import com.example.artem.cashregister.Sale.fragments.receipt.ProductInReceiptModel;
 
 public class SaleFragment extends Fragment {
 
     public interface SaleFragmentListener{
-        ProductsModel getProductsModel();
         void requestAddDialogFragment();
+        double getTotalAmout();
     }
 
     SaleFragmentListener mListener;
@@ -26,15 +28,15 @@ public class SaleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sale, container,false);
 
-        Button addProductButton = (Button) view.findViewById(R.id.fragment_sale__button_add_product_in_list);
-        addProductButton.setOnClickListener(new OnAddClicked());
+        ImageView addproduct = view.findViewById(R.id.fragment_sale__button_add_product_in_list);
+        addproduct.setOnClickListener(new OnAddClicked());
 
-        /*
-        ProductAdapter productAdapter = new ProductAdapter(mListener.getProductsModel());
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_sale__productsInReceipt_recycle_view);
-        recyclerView.setAdapter(productAdapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),4));
-        */
+        TextView totalAmout = (TextView) view.findViewById(R.id.fragment_sale__result_figure);
+
+        Double totalSumOfPurchases = mListener.getTotalAmout();
+        String parsedIntoStringAmount = String.valueOf(totalSumOfPurchases);
+        totalAmout.setText(parsedIntoStringAmount);
+
         return view;
     }
 

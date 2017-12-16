@@ -1,12 +1,11 @@
-package com.example.artem.cashregister;
+package com.example.artem.cashregister.Sale;
 
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import com.example.artem.cashregister.fragments.SaleFragment;
-
-import java.util.Locale;
+import com.example.artem.cashregister.Sale.fragments.receipt.ReceiptFragment;
+import com.example.artem.cashregister.Sale.fragments.saleProcess.SaleFragment;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -22,7 +21,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment = new SaleFragment();
                 break;
             case 1:
-                fragment = new SaleFragment();
+                fragment = new ReceiptFragment();
                 break;
         }
         return fragment;
@@ -36,6 +35,14 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
 
-        return "OBJECT" + (position+1);
+        if(position == 0){
+            return "ТОВАРЫ";
+        }
+        if(position == 1){
+
+            return "ЧЕК";
+        }
+
+        return null;
     }
 }

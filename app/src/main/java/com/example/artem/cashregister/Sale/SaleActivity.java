@@ -1,5 +1,6 @@
-package com.example.artem.cashregister;
+package com.example.artem.cashregister.Sale;
 
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.annotation.NonNull;
@@ -15,17 +16,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.artem.cashregister.R;
+import com.example.artem.cashregister.Sale.fragments.receipt.ProductInReceipt;
+import com.example.artem.cashregister.Sale.fragments.receipt.ReceiptFragment;
 import com.example.artem.cashregister.baseOfProducts.ProductsDataBase;
-import com.example.artem.cashregister.fragments.AddProductDialogFragment;
-import com.example.artem.cashregister.fragments.SaleFragment;
-import com.example.artem.cashregister.baseOfProducts.ProductsModel;
+import com.example.artem.cashregister.Sale.fragments.saleProcess.AddProductDialogFragment;
+import com.example.artem.cashregister.Sale.fragments.saleProcess.SaleFragment;
+import com.example.artem.cashregister.Sale.fragments.receipt.ProductInReceiptModel;
+import com.example.artem.cashregister.dataBase.AppDataBase;
+import com.example.artem.cashregister.dataBase.Product;
 
 public class SaleActivity extends AppCompatActivity implements
-        SaleFragment.SaleFragmentListener,ActionBar.TabListener {
+        SaleFragment.SaleFragmentListener,ActionBar.TabListener,ReceiptFragment.ReceiptFragmentListener,
+        AddProductDialogFragment.AddProductDialogFragmentListener {
 
     //AddProductDialogFragment.Listener
 
-    private final ProductsModel productModel= new ProductsModel();
+    private ProductInReceiptModel productInReceiptModel= new ProductInReceiptModel();
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
     private DrawerLayout mDrawerLayout;
@@ -102,8 +109,6 @@ public class SaleActivity extends AppCompatActivity implements
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
-
     }
 
     @Override
@@ -118,8 +123,6 @@ public class SaleActivity extends AppCompatActivity implements
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -159,8 +162,8 @@ public class SaleActivity extends AppCompatActivity implements
     }
 
     @Override
-    public ProductsModel getProductsModel() {
-        return productModel;
+    public ProductInReceiptModel getProductsModel() {
+        return productInReceiptModel;
     }
 
     @Override
@@ -168,10 +171,39 @@ public class SaleActivity extends AppCompatActivity implements
         openDialog();
     }
 
-    //@Override
-    //public void addProduct(Product product) {
-       // productModel.addProduct(product);
-    //}
+    @Override
+    public void addProduct(ProductInReceipt productInReceipt) {
+       productInReceiptModel.addProduct(productInReceipt);
+    }
+
+    @Override
+    public Product findProductInDataBase(String nameOfProduct) {
+
+        Product product;
+
+        AppDataBase db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "DataBaseOfProducts")
+                .allowMainThreadQueries()
+                .build();
+        try {
+            product = db.productDao().findByName(nameOfProduct);
+        } finally {
+            db.close();
+        }
+        return product;
+    }
+
+    @Override
+    public void clearListOfPurchases() {
+        productInReceiptModel.clearListOfProducts();
+    }
+
+    @Override
+    public double getTotalAmout() {
+
+        Double result = productInReceiptModel.gainSumOfPurcases();
+
+        return result;
+    }
 
     private void openDialog() {
         AddProductDialogFragment addProductDialogFragment = new AddProductDialogFragment();

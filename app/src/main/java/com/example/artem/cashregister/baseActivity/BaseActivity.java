@@ -1,4 +1,4 @@
-package com.example.artem.cashregister;
+package com.example.artem.cashregister.baseActivity;
 
 import android.content.res.Configuration;
 import android.support.annotation.NonNull;
@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.artem.cashregister.R;
+import com.example.artem.cashregister.Sale.SaleActivity;
 import com.example.artem.cashregister.baseOfProducts.ProductsDataBase;
 
 public class BaseActivity extends AppCompatActivity {
