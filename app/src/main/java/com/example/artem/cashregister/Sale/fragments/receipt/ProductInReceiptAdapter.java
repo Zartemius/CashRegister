@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 public class ProductInReceiptAdapter extends RecyclerView.Adapter<ProductInReceiptViewHolder>
-        implements ProductInReceiptModel.Listener {
+        implements ProductInReceiptModel.Listener,ReceiptFragment.ReceiptFragmentListener {
 
     private final ProductInReceiptModel productInReceiptModel;
 
@@ -33,4 +33,15 @@ public class ProductInReceiptAdapter extends RecyclerView.Adapter<ProductInRecei
     public void onChanged() {
         notifyDataSetChanged();
     }
+
+    @Override
+    public ProductInReceiptModel getProductsModel() {
+        return null;
+    }
+
+    public void clearListOfPurchases() {
+        this.productInReceiptModel.mProductsInReceiptList.clear();
+        notifyDataSetChanged();
+    }
 }
+

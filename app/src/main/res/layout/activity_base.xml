@@ -11,9 +11,21 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/activity_base__toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/base_activity__tool_bar" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
     android:background="#EEEEEE">
+
 
     <ImageView
         android:id="@+id/activity_base__front_picture"
@@ -34,9 +46,11 @@
         android:layout_marginLeft="2dp"
         android:text="Welcome to DreamShop"/>
 
+    </LinearLayout>
+
 </LinearLayout>
 
-<android.support.design.widget.NavigationView
+    <android.support.design.widget.NavigationView
     android:id="@+id/navigation"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"

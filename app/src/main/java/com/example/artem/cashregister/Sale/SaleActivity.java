@@ -15,7 +15,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
 import com.example.artem.cashregister.R;
 import com.example.artem.cashregister.Sale.fragments.receipt.ProductInReceipt;
 import com.example.artem.cashregister.Sale.fragments.receipt.ReceiptFragment;
@@ -30,8 +29,6 @@ public class SaleActivity extends AppCompatActivity implements
         SaleFragment.SaleFragmentListener,ActionBar.TabListener,ReceiptFragment.ReceiptFragmentListener,
         AddProductDialogFragment.AddProductDialogFragmentListener {
 
-    //AddProductDialogFragment.Listener
-
     private ProductInReceiptModel productInReceiptModel= new ProductInReceiptModel();
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
@@ -44,6 +41,8 @@ public class SaleActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sale);
+
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -85,26 +84,23 @@ public class SaleActivity extends AppCompatActivity implements
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(
-                this,                  /* host Activity */
-                mDrawerLayout,         /* DrawerLayout object */
-                R.string.drawer_open,  /* "open drawer" description */
-                R.string.drawer_close  /* "close drawer" description */
+                this,
+                mDrawerLayout,
+                R.string.drawer_open,
+                R.string.drawer_close
         ) {
 
-            /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
                 getSupportActionBar().setTitle(mTitle);
             }
 
-            /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
                 getSupportActionBar().setTitle(mDrawerTitle);
             }
         };
 
-        // Set the drawer toggle as the DrawerListener
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -114,7 +110,6 @@ public class SaleActivity extends AppCompatActivity implements
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        // Sync the toggle state after onRestoreInstanceState has occurred.
         mDrawerToggle.syncState();
     }
 
@@ -190,19 +185,6 @@ public class SaleActivity extends AppCompatActivity implements
             db.close();
         }
         return product;
-    }
-
-    @Override
-    public void clearListOfPurchases() {
-        productInReceiptModel.clearListOfProducts();
-    }
-
-    @Override
-    public double getTotalAmout() {
-
-        Double result = productInReceiptModel.gainSumOfPurcases();
-
-        return result;
     }
 
     private void openDialog() {

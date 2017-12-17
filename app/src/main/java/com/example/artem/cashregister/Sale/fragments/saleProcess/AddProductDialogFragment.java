@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-
+import android.widget.Toast;
 import com.example.artem.cashregister.R;
 import com.example.artem.cashregister.Sale.fragments.receipt.ProductInReceipt;
 import com.example.artem.cashregister.dataBase.Product;
@@ -23,7 +23,7 @@ public class AddProductDialogFragment extends DialogFragment {
 
     private AddProductDialogFragmentListener mlistener;
     private EditText productName;
-    Product productFromDataBase;
+    private Product productFromDataBase;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -35,13 +35,19 @@ public class AddProductDialogFragment extends DialogFragment {
 
         result.setTitle("Add a product")
                 .setView(view)
-                .setPositiveButton("Искать", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String name  = productName.getText().toString();
-                        productFromDataBase = mlistener.findProductInDataBase(name);
-                        ProductInReceipt productForAddingToReceipt = new ProductInReceipt(productFromDataBase);
-                        mlistener.addProduct(productForAddingToReceipt);
+
+                        if(name.equals("")) {
+                            Toast.makeText(getContext(), "Строка для ввода данных осталась пустой",Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            productFromDataBase = mlistener.findProductInDataBase(name);
+                            ProductInReceipt productForAddingToReceipt = new ProductInReceipt(productFromDataBase);
+                            mlistener.addProduct(productForAddingToReceipt);
+                        }
                     }
                 })
                 .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
@@ -61,7 +67,6 @@ public class AddProductDialogFragment extends DialogFragment {
         super.onAttach(context);
        mlistener = (AddProductDialogFragmentListener) context;
     }
-
 }
 
 

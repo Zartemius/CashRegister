@@ -3,6 +3,7 @@ package com.example.artem.cashregister.baseOfProducts;
 import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -15,6 +16,8 @@ import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.example.artem.cashregister.R;
 import com.example.artem.cashregister.Sale.SaleActivity;
@@ -37,9 +40,17 @@ public class ProductsDataBase extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_data_base);
 
+        if(Build.VERSION.SDK_INT >=21){
+            Window window = this.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(R.color.base_of_products_status_bar));
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_products_data_base__toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
 
         FloatingActionButton floatButton = findViewById(R.id.activity_products_data_base__floating_button);
         floatButton.setOnClickListener(new OnAddClicked());
@@ -81,30 +92,26 @@ public class ProductsDataBase extends AppCompatActivity {
 
             mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
             mDrawerToggle = new ActionBarDrawerToggle(
-                    this,                  /* host Activity */
-                    mDrawerLayout,         /* DrawerLayout object */
-                    R.string.drawer_open,  /* "open drawer" description */
-                    R.string.drawer_close  /* "close drawer" description */
+                    this,
+                    mDrawerLayout,
+                    R.string.drawer_open,
+                    R.string.drawer_close
             ) {
 
-                /**
-                 * Called when a drawer has settled in a completely closed state.
-                 */
+
                 public void onDrawerClosed(View view) {
                     super.onDrawerClosed(view);
                     getSupportActionBar().setTitle(mTitle);
                 }
 
-                /**
-                 * Called when a drawer has settled in a completely open state.
-                 */
+
                 public void onDrawerOpened(View drawerView) {
                     super.onDrawerOpened(drawerView);
                     getSupportActionBar().setTitle(mDrawerTitle);
                 }
             };
 
-            // Set the drawer toggle as the DrawerListener
+
             mDrawerLayout.setDrawerListener(mDrawerToggle);
 
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -114,7 +121,6 @@ public class ProductsDataBase extends AppCompatActivity {
         @Override
         protected void onPostCreate (Bundle savedInstanceState){
             super.onPostCreate(savedInstanceState);
-            // Sync the toggle state after onRestoreInstanceState has occurred.
             mDrawerToggle.syncState();
         }
 
@@ -126,12 +132,9 @@ public class ProductsDataBase extends AppCompatActivity {
 
         @Override
         public boolean onOptionsItemSelected (MenuItem item){
-            // Pass the event to ActionBarDrawerToggle, if it returns
-            // true, then it has handled the app icon touch event
             if (mDrawerToggle.onOptionsItemSelected(item)) {
                 return true;
             }
-            // Handle your other action bar items...
 
             return super.onOptionsItemSelected(item);
         }

@@ -17,9 +17,8 @@ public class ReceiptFragment extends Fragment{
 
     public interface ReceiptFragmentListener {
         ProductInReceiptModel getProductsModel();
-        void clearListOfPurchases();
     }
-
+    ProductInReceiptAdapter productInReceiptAdapter;
     ReceiptFragmentListener mListener;
 
     @Nullable
@@ -27,7 +26,7 @@ public class ReceiptFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_receipt, container,false);
-        ProductInReceiptAdapter productInReceiptAdapter = new ProductInReceiptAdapter(mListener.getProductsModel());
+        productInReceiptAdapter = new ProductInReceiptAdapter(mListener.getProductsModel());
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_sale__products_in_receipt_recycle_view);
         recyclerView.setAdapter(productInReceiptAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -47,7 +46,7 @@ public class ReceiptFragment extends Fragment{
     public class OnClearListButton implements View.OnClickListener{
         @Override
         public void onClick(View view) {
-            mListener.clearListOfPurchases();
+            productInReceiptAdapter.clearListOfPurchases();
         }
     }
 }

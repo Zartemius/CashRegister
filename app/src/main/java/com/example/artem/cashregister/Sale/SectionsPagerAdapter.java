@@ -1,6 +1,5 @@
 package com.example.artem.cashregister.Sale;
 
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -42,7 +41,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
             return "ЧЕК";
         }
-
         return null;
     }
 }

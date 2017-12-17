@@ -12,16 +12,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.artem.cashregister.R;
+import com.example.artem.cashregister.Sale.fragments.receipt.ProductInReceipt;
 import com.example.artem.cashregister.Sale.fragments.receipt.ProductInReceiptModel;
 
 public class SaleFragment extends Fragment {
 
     public interface SaleFragmentListener{
         void requestAddDialogFragment();
-        double getTotalAmout();
     }
 
     SaleFragmentListener mListener;
+    Double totalAmount = 0.00;
 
     @Nullable
     @Override
@@ -33,8 +34,7 @@ public class SaleFragment extends Fragment {
 
         TextView totalAmout = (TextView) view.findViewById(R.id.fragment_sale__result_figure);
 
-        Double totalSumOfPurchases = mListener.getTotalAmout();
-        String parsedIntoStringAmount = String.valueOf(totalSumOfPurchases);
+        String parsedIntoStringAmount = String.valueOf(totalAmount);
         totalAmout.setText(parsedIntoStringAmount);
 
         return view;
