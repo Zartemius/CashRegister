@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import com.example.artem.cashregister.R;
+import com.example.artem.cashregister.Sale.fragments.keyboard.FreeGoods;
 import com.example.artem.cashregister.Sale.fragments.receipt.ProductInReceipt;
 import com.example.artem.cashregister.Sale.fragments.receipt.ReceiptFragment;
 import com.example.artem.cashregister.baseOfProducts.ProductsDataBase;
@@ -190,6 +191,12 @@ public class SaleActivity extends AppCompatActivity implements
     private void openDialog() {
         AddProductDialogFragment addProductDialogFragment = new AddProductDialogFragment();
         addProductDialogFragment.show(getSupportFragmentManager(),"Add product dialog");
+    }
+
+
+    public void openFragmentForAddingFreeProduct(){
+            Intent intent = new Intent(SaleActivity.this, FreeGoods.class);
+            SaleActivity.this.startActivity(intent);
     }
 }
 
