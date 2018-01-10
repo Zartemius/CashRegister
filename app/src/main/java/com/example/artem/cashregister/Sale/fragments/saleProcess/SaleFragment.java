@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +66,17 @@ public class SaleFragment extends Fragment {
     public class OnButtonAddProductClicked implements  View.OnClickListener {
         @Override
         public void onClick(View view) {
-            mListener.openFragmentForAddingFreeProduct();
+
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+            FreeGoods freeGoodsFragment = new FreeGoods();
+            fragmentTransaction.replace(R.id.activity_sale__container_of_called_fragment,freeGoodsFragment);
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+
+            //mListener.openFragmentForAddingFreeProduct();
         }
     }
 }

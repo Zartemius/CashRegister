@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.FragmentTransaction;
@@ -27,12 +28,10 @@ import com.example.artem.cashregister.dataBase.AppDataBase;
 import com.example.artem.cashregister.dataBase.Product;
 
 public class SaleActivity extends AppCompatActivity implements
-        SaleFragment.SaleFragmentListener,ActionBar.TabListener,ReceiptFragment.ReceiptFragmentListener,
+        SaleFragment.SaleFragmentListener,ReceiptFragment.ReceiptFragmentListener,
         AddProductDialogFragment.AddProductDialogFragmentListener {
 
     private ProductInReceiptModel productInReceiptModel= new ProductInReceiptModel();
-    SectionsPagerAdapter mSectionsPagerAdapter;
-    ViewPager mViewPager;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private CharSequence mDrawerTitle;
@@ -44,25 +43,6 @@ public class SaleActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_sale);
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-        final ActionBar actionBar = getSupportActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
-        mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-
-        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
-            @Override
-            public void onPageSelected(int position) {
-                actionBar.setSelectedNavigationItem(position);
-            }
-        });
-
-        for(int i = 0; i<mSectionsPagerAdapter.getCount(); i++){
-            actionBar.addTab(actionBar.newTab().setText(mSectionsPagerAdapter.getPageTitle(i)).setTabListener(this));
-        }
 
         NavigationView navigationView = findViewById(R.id.navigation);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -106,6 +86,14 @@ public class SaleActivity extends AppCompatActivity implements
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        RootFragment rootFragment = new RootFragment();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.activity_sale__container_of_called_fragment, rootFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     @Override
@@ -141,21 +129,6 @@ public class SaleActivity extends AppCompatActivity implements
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
-        mViewPager.setCurrentItem(tab.getPosition());
-    }
-
-    @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
-    }
-
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
-    }
 
     @Override
     public ProductInReceiptModel getProductsModel() {
@@ -193,10 +166,19 @@ public class SaleActivity extends AppCompatActivity implements
         addProductDialogFragment.show(getSupportFragmentManager(),"Add product dialog");
     }
 
-
     public void openFragmentForAddingFreeProduct(){
-            Intent intent = new Intent(SaleActivity.this, FreeGoods.class);
-            SaleActivity.this.startActivity(intent);
+
+        /*
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        FreeGoods freeGoodsFragment = new FreeGoods();
+        fragmentTransaction.replace(R.id.activity_sale__container_of_called_fragment,freeGoodsFragment);
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+        */
     }
 }
 

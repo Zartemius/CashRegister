@@ -13,19 +13,20 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-public class CustomKeyboardForFreeGoods extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
+public class CustomKeyboardForFreeGoods  {
 
     public final static int CODECLEAR = -1;
     private Activity mHostActivity;
     private KeyboardView mKeyboardView;
+    private View mRootView;
 
-
-    CustomKeyboardForFreeGoods(Activity host, int keyBoardViewId, int keyBoardId){
+    CustomKeyboardForFreeGoods(Activity host, View rootView, int keyBoardViewId, int keyBoardId){
         mHostActivity = host;
-        mKeyboardView = (KeyboardView)mHostActivity.findViewById(keyBoardViewId);
+        mRootView = rootView;
+        mKeyboardView = (KeyboardView)mRootView.findViewById(keyBoardViewId);
         mKeyboardView.setKeyboard(new Keyboard(mHostActivity,keyBoardId));
         mKeyboardView.setPreviewEnabled(false);
-        mKeyboardView.setOnKeyboardActionListener(this);
+        mKeyboardView.setOnKeyboardActionListener(mOnKeyboardActionListener);
         mHostActivity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
@@ -64,7 +65,7 @@ public class CustomKeyboardForFreeGoods extends InputMethodService implements Ke
 
         editText.setInputType(editText.getInputType() | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
     }
-
+    private KeyboardView.OnKeyboardActionListener mOnKeyboardActionListener = new KeyboardView.OnKeyboardActionListener() {
         @Override
         public void onPress(int i) {
 
@@ -75,14 +76,14 @@ public class CustomKeyboardForFreeGoods extends InputMethodService implements Ke
 
         }
 
+
         @Override
         public void onKey(int primaryCode, int[] keyCodes) {
             long eventTime = System.currentTimeMillis();
             KeyEvent event = new KeyEvent(eventTime, eventTime, KeyEvent.ACTION_DOWN, primaryCode, 0, 0, 0, 0, KeyEvent.FLAG_SOFT_KEYBOARD | KeyEvent.FLAG_KEEP_TOUCH_MODE);
             mHostActivity.dispatchKeyEvent(event);
 
-            if (primaryCode == CODECLEAR)
-            {
+            if (primaryCode == CODECLEAR) {
                 View focusCurrent = mHostActivity.getWindow().getCurrentFocus();
                 if (focusCurrent instanceof EditText) {
                     EditText edittext = (EditText) focusCurrent;
@@ -91,6 +92,7 @@ public class CustomKeyboardForFreeGoods extends InputMethodService implements Ke
                 }
             }
         }
+
         @Override
         public void onText(CharSequence charSequence) {
 
@@ -115,4 +117,6 @@ public class CustomKeyboardForFreeGoods extends InputMethodService implements Ke
         public void swipeUp() {
 
         }
-}
+    };
+
+    }

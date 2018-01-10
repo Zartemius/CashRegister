@@ -14,6 +14,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+
         Fragment fragment = null;
         switch(position){
             case 0:
@@ -24,6 +25,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 break;
         }
         return fragment;
+
+
     }
 
     @Override
