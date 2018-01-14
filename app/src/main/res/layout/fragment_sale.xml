@@ -23,6 +23,20 @@
             android:paddingTop="7dp"
             android:clickable="true"/>
 
+        <SearchView
+            android:id="@+id/fragment_sale__search_product_in_database"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="false"
+            android:queryHint="Поиск товаров" />
+
+
+        <ListView
+            android:id="@+id/fragment_sale__suggestions_from_db"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
     </LinearLayout>
 
     <LinearLayout

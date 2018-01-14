@@ -24,6 +24,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".baseOfProducts.ProductsDataBase"
@@ -37,7 +38,9 @@
         <activity
             android:name=".baseOfProducts.ProductCreation"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".Sale.fragments.keyboard.FreeGoods"></activity>
+        <activity android:name=".Sale.fragments.keyboard.FreeGoods" />
+        <activity android:name=".Sale.SearchActivity"/>
+
     </application>
 
 </manifest>

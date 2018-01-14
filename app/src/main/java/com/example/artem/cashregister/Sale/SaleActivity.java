@@ -16,6 +16,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
+import android.widget.SearchView;
+
 import com.example.artem.cashregister.R;
 import com.example.artem.cashregister.Sale.fragments.keyboard.FreeGoods;
 import com.example.artem.cashregister.Sale.fragments.receipt.ProductInReceipt;
@@ -26,6 +29,8 @@ import com.example.artem.cashregister.Sale.fragments.saleProcess.SaleFragment;
 import com.example.artem.cashregister.Sale.fragments.receipt.ProductInReceiptModel;
 import com.example.artem.cashregister.dataBase.AppDataBase;
 import com.example.artem.cashregister.dataBase.Product;
+
+import java.util.List;
 
 public class SaleActivity extends AppCompatActivity implements
         SaleFragment.SaleFragmentListener,ReceiptFragment.ReceiptFragmentListener,
@@ -161,25 +166,13 @@ public class SaleActivity extends AppCompatActivity implements
         return product;
     }
 
+
     private void openDialog() {
         AddProductDialogFragment addProductDialogFragment = new AddProductDialogFragment();
         addProductDialogFragment.show(getSupportFragmentManager(),"Add product dialog");
     }
 
-    public void openFragmentForAddingFreeProduct(){
 
-        /*
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        FreeGoods freeGoodsFragment = new FreeGoods();
-        fragmentTransaction.replace(R.id.activity_sale__container_of_called_fragment,freeGoodsFragment);
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-
-        */
-    }
 }
 
 
