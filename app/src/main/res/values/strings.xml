@@ -8,4 +8,6 @@
     <string name="drawer_close">Close navigation drawer</string>
     <string name="action_websearch">Web search</string>
     <string name="app_not_available">Sorry, there\'s no web browser available</string>
+    <string name="hint_free_product_name"> <font size="25">Введите наименование товара</font></string>
+    <string name="hint_free_product_price"><font size="25">Введите цену товара</font></string>
 </resources>

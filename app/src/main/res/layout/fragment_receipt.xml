@@ -8,17 +8,20 @@
     android:background="#EEEEEE">
 
     <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="15dp"
+        android:background="@null"
         android:id="@+id/fragment_sale__products_in_receipt_recycle_view"
         android:layout_width="match_parent"
-        android:layout_height="415dp" />
+        android:layout_height="740dp" />
 
     <Button
         android:id="@+id/fragment_sale__products_in_receipt_button"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:background="#2196F3"
-        android:layout_marginRight="3dp"
-        android:layout_marginLeft="3dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="25dp"
         android:text = "ОЧИСТИТЬ"
         android:textColor="#FFFFFF"/>
 
