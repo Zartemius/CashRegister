@@ -20,7 +20,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.artem.cashregister.R;
-import com.example.artem.cashregister.Sale.SaleActivity;
+import com.example.artem.cashregister.sale.SaleActivity;
 import com.example.artem.cashregister.dataBase.AppDataBase;
 import com.example.artem.cashregister.dataBase.Product;
 
@@ -57,6 +57,7 @@ public class ProductsDataBase extends AppCompatActivity {
 
         AppDataBase db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "DataBaseOfProducts")
                 .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
                 .build();
 
             try {

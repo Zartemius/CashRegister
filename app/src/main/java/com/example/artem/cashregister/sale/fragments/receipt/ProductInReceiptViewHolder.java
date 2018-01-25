@@ -1,4 +1,4 @@
-package com.example.artem.cashregister.Sale.fragments.receipt;
+package com.example.artem.cashregister.sale.fragments.receipt;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -26,8 +26,8 @@ public class ProductInReceiptViewHolder extends RecyclerView.ViewHolder {
         price = itemView.findViewById(R.id.product_in_receipt_view_holder__product_price);
     }
 
-    public void setProductInReceipt(ProductInReceipt productInReceipt){
-        this.name.setText(productInReceipt.name);
-        this.price.setText(productInReceipt.price);
+    public void setGoodsInReceipt(String name, String price){
+        this.name.setText(name);
+        this.price.setText(price);
     }
 }

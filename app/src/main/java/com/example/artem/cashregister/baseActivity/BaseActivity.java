@@ -16,7 +16,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.artem.cashregister.R;
-import com.example.artem.cashregister.Sale.SaleActivity;
+import com.example.artem.cashregister.sale.SaleActivity;
 import com.example.artem.cashregister.baseOfProducts.ProductsDataBase;
 
 public class BaseActivity extends AppCompatActivity {

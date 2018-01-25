@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:focusableInTouchMode="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#EEEEEE"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal"
+        android:background="#E0E0E0">
 
         <ImageView
             android:id="@+id/fragment_sale__button_add_product_in_list"
@@ -21,25 +28,27 @@
             android:paddingLeft="7dp"
             android:paddingBottom="7dp"
             android:paddingTop="7dp"
+            android:tint="#757575"
             android:clickable="true"/>
 
-        <SearchView
-            android:id="@+id/fragment_sale__search_product_in_database"
+        <AutoCompleteTextView
+            android:id="@+id/fragment_sale__autoCompleteTextView_for_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:iconifiedByDefault="false"
-            android:queryHint="Поиск товаров" />
+            android:layout_marginLeft="15dp"
+            android:dropDownWidth="match_parent"
+            android:textColor="#424242"
+            android:textCursorDrawable="@null"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="Поиск товаров"/>
 
-
-        <ListView
-            android:id="@+id/fragment_sale__suggestions_from_db"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
 
     </LinearLayout>
 
+
     <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/fragment_sale__button_add_free_product"
         android:layout_width="match_parent"
         android:layout_height="95dp"
@@ -47,10 +56,10 @@
         android:layout_marginLeft="10dp"
         android:background="#FFFFFF"
         android:clickable="true"
-        android:focusable="true"
         android:orientation="horizontal">
 
         <ImageView
+            tools:ignore="MissingPrefix"
             android:id="@+id/fragment_sale__image_on_button"
             android:layout_width="80dp"
             android:layout_height="90dp"
@@ -77,10 +86,14 @@
 
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/fragment_sale__productsInReceipt_recycle_view"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="280dp" />
+        android:layout_height="260dp">
+
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"

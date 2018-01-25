@@ -1,4 +1,4 @@
-package com.example.artem.cashregister.Sale;
+package com.example.artem.cashregister.sale;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

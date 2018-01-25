@@ -17,21 +17,21 @@
         <Key android:codes="11"    android:keyLabel="4" android:keyEdgeFlags="left" />
         <Key android:codes="12"    android:keyLabel="5" />
         <Key android:codes="13"    android:keyLabel="6" />
-        <Key android:codes = "-2"  android:keyLabel="A" android:keyEdgeFlags="right"/>
+        <Key android:codes = "-2"  android:keyLabel="+"  android:keyEdgeFlags="right"/>
     </Row>
 
     <Row>
         <Key android:codes="14"    android:keyLabel="7" android:keyEdgeFlags="left" />
         <Key android:codes="15"    android:keyLabel="8"  />
         <Key android:codes="16"    android:keyLabel="9"  />
-        <Key android:codes = "-3"  android:keyLabel="B" android:keyEdgeFlags="right"/>
+        <Key android:codes = "-3"  android:keyLabel="-" android:keyEdgeFlags="right"/>
     </Row>
 
     <Row>
         <Key android:codes="17"     android:keyEdgeFlags="left" />
         <Key android:codes="7"    android:keyLabel="0"/>
-        <Key android:codes = "-4"  android:keyLabel=","/>
-        <Key android:codes = "-5"  android:keyLabel="E" android:keyEdgeFlags="right"/>
+        <Key android:codes = "-4"  android:keyLabel="."/>
+        <Key android:codes = "-5"  android:keyLabel="x" android:keyEdgeFlags="right"/>
     </Row>
 
 </Keyboard>

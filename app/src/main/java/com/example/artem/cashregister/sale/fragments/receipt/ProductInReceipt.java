@@ -1,4 +1,4 @@
-package com.example.artem.cashregister.Sale.fragments.receipt;
+package com.example.artem.cashregister.sale.fragments.receipt;
 
 import com.example.artem.cashregister.dataBase.Product;
 

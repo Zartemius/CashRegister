@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Sale.SaleActivity">
+        <activity android:name=".sale.SaleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,8 +38,14 @@
         <activity
             android:name=".baseOfProducts.ProductCreation"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".Sale.fragments.keyboard.FreeGoods" />
-        <activity android:name=".Sale.SearchActivity"/>
+        <activity
+            android:name=".sale.FreeGoods.FreeGoods"
+            android:parentActivityName=".sale.SaleActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="sale.SaleActivity"/>
+            </activity>
 
     </application>
 

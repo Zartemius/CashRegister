@@ -15,11 +15,6 @@ import java.util.List;
 @Dao
 public interface ProductDao {
 
-    @Query("SELECT * FROM product WHERE product_name LIKE :productText")
-    public LiveData<List<Product>> getProductsList(String productText);
-
-    @Query("SELECT * FROM product WHERE product_name LIKE :productText")
-    public Cursor getProductsCursor(String productText);
 
     @Query("SELECT * FROM product")
     List<Product> getAll();

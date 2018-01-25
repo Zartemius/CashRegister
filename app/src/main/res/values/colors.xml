@@ -3,7 +3,9 @@
     <color name="colorPrimary">#4CAF50</color>
     <color name="colorPrimaryDark">#1B5E20</color>
     <color name="colorAccent">#E0E0E0</color>
+    <color name="white">#FFFFFF</color>
     <color name="green">#4CAF50</color>
+    <color name="grey">#CFD8DC</color>
     <color name="base_of_products_status_bar">#4A148C</color>
     <color name="base_activity__tool_bar">#00BCD4</color>
     <color name="base_activity__status_bar">#0097A7</color>

@@ -2,7 +2,10 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    defaultConfig {
+    defaultConfig{
+        vectorDrawables{
+            useSupportLibrary = true
+        }
         applicationId "com.example.artem.cashregister"
         minSdkVersion 16
         targetSdkVersion 26
@@ -33,5 +36,6 @@ dependencies {
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     implementation 'android.arch.lifecycle:extensions:1.0.0-rc1'
     implementation "android.arch.persistence.room:runtime:1.0.0-rc1"
+    annotationProcessor "android.arch.lifecycle:compiler:1.0.0-rc1"
     annotationProcessor "android.arch.persistence.room:compiler:1.0.0-rc1"
 }

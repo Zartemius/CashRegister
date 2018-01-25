@@ -1,6 +1,8 @@
-package com.example.artem.cashregister.Sale.fragments.receipt;
+package com.example.artem.cashregister.sale.fragments.receipt;
 
-import android.support.v4.app.Fragment;
+import android.arch.lifecycle.LifecycleFragment;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,12 +14,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.artem.cashregister.R;
+import com.example.artem.cashregister.dataBase.GoodsInReceipt;
 
-public class ReceiptFragment extends Fragment{
+import java.util.ArrayList;
+import java.util.List;
+
+public class ReceiptFragment extends LifecycleFragment{
 
     public interface ReceiptFragmentListener {
-        ProductInReceiptModel getProductsModel();
+
     }
+
+    ProductsInReceiptViewModel viewModel;
     ProductInReceiptAdapter productInReceiptAdapter;
     ReceiptFragmentListener mListener;
 
@@ -26,10 +34,20 @@ public class ReceiptFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_receipt, container,false);
-        productInReceiptAdapter = new ProductInReceiptAdapter(mListener.getProductsModel());
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_sale__products_in_receipt_recycle_view);
-        recyclerView.setAdapter(productInReceiptAdapter);
+        productInReceiptAdapter = new ProductInReceiptAdapter(new ArrayList<GoodsInReceipt>());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(productInReceiptAdapter);
+
+
+        viewModel = ViewModelProviders.of(this).get(ProductsInReceiptViewModel.class);
+
+        viewModel.getReceiptProductsList().observe(ReceiptFragment.this, new Observer<List<GoodsInReceipt>>() {
+            @Override
+            public void onChanged(@Nullable List<GoodsInReceipt> goodsInReceipt) {
+                productInReceiptAdapter.addItems(goodsInReceipt);
+            }
+        });
 
         Button buttonToDeletePurchaseson = (Button) view.findViewById(R.id.fragment_sale__products_in_receipt_button);
         buttonToDeletePurchaseson.setOnClickListener(new OnClearListButton());
@@ -43,10 +61,11 @@ public class ReceiptFragment extends Fragment{
         mListener = (ReceiptFragmentListener) context;
     }
 
+
     public class OnClearListButton implements View.OnClickListener{
         @Override
         public void onClick(View view) {
-            productInReceiptAdapter.clearListOfPurchases();
+            viewModel.deleteAllGoodsFromReceipt();
         }
     }
 }

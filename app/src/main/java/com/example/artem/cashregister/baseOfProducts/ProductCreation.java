@@ -1,5 +1,6 @@
 package com.example.artem.cashregister.baseOfProducts;
 
+
 import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.os.Build;
@@ -17,7 +18,8 @@ import com.example.artem.cashregister.R;
 import com.example.artem.cashregister.dataBase.AppDataBase;
 import com.example.artem.cashregister.dataBase.Product;
 
-public class ProductCreation extends AppCompatActivity {
+
+public class ProductCreation extends AppCompatActivity{
 
     private EditText productName;
     private EditText code;
@@ -47,6 +49,7 @@ public class ProductCreation extends AppCompatActivity {
         button = findViewById(R.id.creation_product__add_button);
 
         button.setOnClickListener(new OnDataBaseEditTextFieldsClicked());
+
     }
 
     public void showWarningMessage(String message){
@@ -68,6 +71,7 @@ public class ProductCreation extends AppCompatActivity {
                 Product productWithReceivedData = new Product(receivedName, receivedCode, receivedPrice);
                 db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "DataBaseOfProducts")
                         .allowMainThreadQueries()
+                        .fallbackToDestructiveMigration()
                         .build();
                 try {
                     db.productDao().insertAll(productWithReceivedData);

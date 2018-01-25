@@ -1,7 +1,6 @@
-package com.example.artem.cashregister.Sale.fragments.keyboard;
+package com.example.artem.cashregister.sale.FreeGoods;
 
 import android.app.Activity;
-import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.text.Editable;
@@ -18,12 +17,10 @@ public class CustomKeyboardForFreeGoods  {
     public final static int CODECLEAR = -1;
     private Activity mHostActivity;
     private KeyboardView mKeyboardView;
-    private View mRootView;
 
-    CustomKeyboardForFreeGoods(Activity host, View rootView, int keyBoardViewId, int keyBoardId){
+    CustomKeyboardForFreeGoods(Activity host, int keyBoardViewId, int keyBoardId){
         mHostActivity = host;
-        mRootView = rootView;
-        mKeyboardView = (KeyboardView)mRootView.findViewById(keyBoardViewId);
+        mKeyboardView = (KeyboardView)mHostActivity.findViewById(keyBoardViewId);
         mKeyboardView.setKeyboard(new Keyboard(mHostActivity,keyBoardId));
         mKeyboardView.setPreviewEnabled(false);
         mKeyboardView.setOnKeyboardActionListener(mOnKeyboardActionListener);

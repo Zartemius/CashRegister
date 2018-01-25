@@ -1,10 +1,10 @@
-package com.example.artem.cashregister.Sale;
+package com.example.artem.cashregister.sale;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import com.example.artem.cashregister.Sale.fragments.receipt.ReceiptFragment;
-import com.example.artem.cashregister.Sale.fragments.saleProcess.SaleFragment;
+import com.example.artem.cashregister.sale.fragments.receipt.ReceiptFragment;
+import com.example.artem.cashregister.sale.fragments.saleProcess.SaleFragment;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
