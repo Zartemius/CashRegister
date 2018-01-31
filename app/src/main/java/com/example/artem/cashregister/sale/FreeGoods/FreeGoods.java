@@ -50,8 +50,6 @@ public class FreeGoods extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Свободный товар в чек");
 
-
-
         Button buttonAddFreeProductsInReceipt= findViewById(R.id.activity_free_goods__button_to_add_free_product);
         buttonAddFreeProductsInReceipt.setOnClickListener(new ButtonAddProductClickListener());
     }
@@ -78,7 +76,7 @@ public class FreeGoods extends AppCompatActivity {
             if(productName.equals(defaultNameForGoodsNameWindow)){
                Toast toast = Toast.makeText(getApplicationContext(), "Товар с ценой "
                                + productPrice + " руб. добавлен в чек",
-                        Toast.LENGTH_LONG);
+                        Toast.LENGTH_SHORT);
 
                toast.setGravity(Gravity.TOP,0,0);
                toast.show();
@@ -86,7 +84,7 @@ public class FreeGoods extends AppCompatActivity {
             else{
                 Toast toast = Toast.makeText(getApplicationContext(), "Товар " + productName + " с ценой " +
                                 productPrice +" руб. добавлен в чек",
-                        Toast.LENGTH_LONG);
+                        Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.TOP,0,0);
 
                 toast.show();

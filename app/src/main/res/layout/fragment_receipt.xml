@@ -1,28 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#EEEEEE">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:background="#EEEEEE"
+    android:orientation="vertical">
+
 
     <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="@null"
-        android:id="@+id/fragment_sale__products_in_receipt_recycle_view"
-        android:layout_width="match_parent"
-        android:layout_height="740dp" />
+        android:paddingBottom="45dp"
+        android:scrollbars="vertical"
+        android:id="@+id/fragment_sale__products_in_receipt_recycle_view" />
 
-    <Button
-        android:id="@+id/fragment_sale__products_in_receipt_button"
+    <TextView
+        android:id="@+id/fragment_sale__products_in_receipt_text_view"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="#2196F3"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
-        android:textSize="25dp"
-        android:text = "ОЧИСТИТЬ"
-        android:textColor="#FFFFFF"/>
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/fragment_sale__products_in_receipt_recycle_view"
+        android:background="@android:color/transparent"
+        android:text="ОЧИСТИТЬ"
+        android:textSize="20dp"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="#757575"
+        android:gravity="center|top" />
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp">
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:layout_marginBottom="20dp">
+        <TextView
+            android:id="@+id/fragment_sale__products_in_receipt_word_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft ="20dp"
+            android:layout_marginTop="8dp"
+            android:textSize="25sp"
+            android:text="Итого"/>
+        <TextView
+            android:id="@+id/fragment_sale__products_in_receipt_result_figure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="8dp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="35sp" />
+
+     </LinearLayout>
+
+        <Button
+            android:id="@+id/fragment_sale__products_in_receipt_button_calculation"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="#2196F3"
+            android:text = "Расчет"
+            android:textSize="25sp"
+            android:textColor="#FFFFFF"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+

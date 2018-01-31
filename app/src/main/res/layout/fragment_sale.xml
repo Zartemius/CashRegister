@@ -22,13 +22,14 @@
 
         <ImageView
             android:id="@+id/fragment_sale__button_add_product_in_list"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/search"
-            android:paddingLeft="7dp"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            app:srcCompat="@drawable/search"
+            android:layout_gravity="center"
+            android:paddingLeft="13dp"
+            android:layout_marginRight="5dp"
             android:paddingBottom="7dp"
             android:paddingTop="7dp"
-            android:tint="#757575"
             android:clickable="true"/>
 
         <AutoCompleteTextView
@@ -43,16 +44,14 @@
             android:backgroundTint="@android:color/transparent"
             android:hint="Поиск товаров"/>
 
-
     </LinearLayout>
-
 
     <LinearLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/fragment_sale__button_add_free_product"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="150dp"
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="5dp"
@@ -66,39 +65,36 @@
             android:layout_width="105dp"
             android:layout_height="120dp"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"
-            android:src="@drawable/products_icon"/>
+            android:layout_marginLeft="25dp"
+            app:srcCompat="@drawable/products_icon"/>
 
         <TextView
             android:id="@+id/fragment_sale__text_on_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="130dp"
-            android:layout_marginRight="190dp"
+            android:layout_marginLeft="110dp"
+            android:layout_marginRight="140dp"
             android:textColor="#000000"
-            android:textSize="21dp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:text="Cвободный товар в чек"/>
 
         <ImageView
             android:id="@+id/fragment_sale__imagePlus_on_button"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginRight="10dp"
-            android:src="@drawable/add_icon" />
+            app:srcCompat="@drawable/add_icon" />
 
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="530dp">
-
+        android:layout_height="515dp">
 
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"

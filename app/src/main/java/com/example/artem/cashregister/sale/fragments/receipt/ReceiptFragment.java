@@ -12,7 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.artem.cashregister.R;
 import com.example.artem.cashregister.dataBase.GoodsInReceipt;
@@ -23,35 +23,59 @@ import java.util.List;
 public class ReceiptFragment extends LifecycleFragment{
 
     public interface ReceiptFragmentListener {
-
     }
 
     ProductsInReceiptViewModel viewModel;
     ProductInReceiptAdapter productInReceiptAdapter;
     ReceiptFragmentListener mListener;
+    TextView clearReceiptButton;
+    TextView receiptTotalAmount;
+    double result = 0.0;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_receipt, container,false);
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_sale__products_in_receipt_recycle_view);
+        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_sale__products_in_receipt_recycle_view);
         productInReceiptAdapter = new ProductInReceiptAdapter(new ArrayList<GoodsInReceipt>());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(productInReceiptAdapter);
 
 
+        DividerItemDecoration mDividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                LinearLayoutManager.VERTICAL);
+        recyclerView.addItemDecoration(mDividerItemDecoration);
+
+
         viewModel = ViewModelProviders.of(this).get(ProductsInReceiptViewModel.class);
+
+        receiptTotalAmount = view.findViewById(R.id.fragment_sale__products_in_receipt_result_figure);
 
         viewModel.getReceiptProductsList().observe(ReceiptFragment.this, new Observer<List<GoodsInReceipt>>() {
             @Override
             public void onChanged(@Nullable List<GoodsInReceipt> goodsInReceipt) {
+
                 productInReceiptAdapter.addItems(goodsInReceipt);
+
+                if(!goodsInReceipt.isEmpty()){
+                    clearReceiptButton.setVisibility(View.VISIBLE);
+                }
+
+                for(GoodsInReceipt list: goodsInReceipt){
+                    String priceOfProduct  = list.getPrice();
+                    double convertedInDoublePrice = Double.parseDouble(priceOfProduct);
+                    result+=convertedInDoublePrice;
+                }
+
+                String convertedInStringResult = String.valueOf(result);
+
+                receiptTotalAmount.setText(convertedInStringResult);
             }
         });
 
-        Button buttonToDeletePurchaseson = (Button) view.findViewById(R.id.fragment_sale__products_in_receipt_button);
-        buttonToDeletePurchaseson.setOnClickListener(new OnClearListButton());
+        clearReceiptButton= view.findViewById(R.id.fragment_sale__products_in_receipt_text_view);
+        clearReceiptButton.setOnClickListener(new OnClearListButton());
 
         return view;
     }
@@ -67,6 +91,8 @@ public class ReceiptFragment extends LifecycleFragment{
         @Override
         public void onClick(View view) {
             viewModel.deleteAllGoodsFromReceipt();
+            clearReceiptButton.setVisibility(View.GONE);
+            result = 0.0;
         }
     }
 }

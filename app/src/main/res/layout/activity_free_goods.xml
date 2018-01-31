@@ -52,6 +52,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:background="#4CAF50"
+            android:inputType="numberDecimal"
             android:textColor="#FFFFFF"
             android:textSize="55sp"
             android:gravity="right|center"

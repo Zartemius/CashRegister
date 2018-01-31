@@ -1,6 +1,8 @@
 package com.example.artem.cashregister.sale.FreeGoods;
 
 import android.app.Activity;
+import android.graphics.Canvas;
+import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.text.Editable;
@@ -9,14 +11,17 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-public class CustomKeyboardForFreeGoods  {
+public class CustomKeyboardForFreeGoods {
 
     public final static int CODECLEAR = -1;
+    public final static int COMMA= -4;
     private Activity mHostActivity;
     private KeyboardView mKeyboardView;
+
 
     CustomKeyboardForFreeGoods(Activity host, int keyBoardViewId, int keyBoardId){
         mHostActivity = host;
@@ -73,7 +78,6 @@ public class CustomKeyboardForFreeGoods  {
 
         }
 
-
         @Override
         public void onKey(int primaryCode, int[] keyCodes) {
             long eventTime = System.currentTimeMillis();
@@ -88,7 +92,12 @@ public class CustomKeyboardForFreeGoods  {
                     editable.clear();
                 }
             }
+
+            if(primaryCode == COMMA){
+
+            }
         }
+
 
         @Override
         public void onText(CharSequence charSequence) {
