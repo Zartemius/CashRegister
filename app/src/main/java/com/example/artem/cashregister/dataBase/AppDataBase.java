@@ -11,12 +11,17 @@ import android.content.Context;
 public abstract class AppDataBase extends RoomDatabase {
 
     private static AppDataBase INSTANCE;
+    private static final Object LOCK = new Object();
 
-    public static AppDataBase getDatabase(Context context){
+    public synchronized static AppDataBase getDatabase(Context context){
         if(INSTANCE == null){
-            INSTANCE = Room.databaseBuilder(context.getApplicationContext(),AppDataBase.class, "dataBase")
-                    .fallbackToDestructiveMigration()
-                    .build();
+            synchronized (LOCK) {
+                if(INSTANCE == null) {
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDataBase.class, "dataBase")
+                            .fallbackToDestructiveMigration()
+                            .build();
+                }
+            }
         }
         return INSTANCE;
     }

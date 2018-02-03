@@ -8,8 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".baseActivity.BaseActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -19,14 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".sale.SaleActivity"
+        <activity
+            android:name=".sale.SaleActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".baseOfProducts.ProductsDataBase"
@@ -46,9 +45,9 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="sale.SaleActivity"/>
-            </activity>
-
+                android:value="sale.SaleActivity" />
+        </activity>
+        <activity android:name=".sale.payment.Payment"></activity>
     </application>
 
 </manifest>

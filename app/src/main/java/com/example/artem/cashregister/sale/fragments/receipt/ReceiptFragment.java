@@ -38,7 +38,8 @@ public class ReceiptFragment extends LifecycleFragment{
 
         View view = inflater.inflate(R.layout.fragment_receipt, container,false);
         final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_sale__products_in_receipt_recycle_view);
-        productInReceiptAdapter = new ProductInReceiptAdapter(new ArrayList<GoodsInReceipt>());
+        productInReceiptAdapter = new ProductInReceiptAdapter( new ArrayList<GoodsInReceipt>());
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(productInReceiptAdapter);
 

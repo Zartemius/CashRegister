@@ -69,7 +69,7 @@ public class ProductCreation extends AppCompatActivity{
             }
             else{
                 Product productWithReceivedData = new Product(receivedName, receivedCode, receivedPrice);
-                db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "DataBaseOfProducts")
+                db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "dataBase")
                         .allowMainThreadQueries()
                         .fallbackToDestructiveMigration()
                         .build();

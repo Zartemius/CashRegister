@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatDelegate;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.artem.cashregister.R;
+import com.example.artem.cashregister.dataBase.Product;
 import com.example.artem.cashregister.sale.FreeGoods.FreeGoods;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SaleFragment extends LifecycleFragment {
 
@@ -25,14 +30,19 @@ public class SaleFragment extends LifecycleFragment {
 
     }
 
-    private AutoCompleteTextView mAutoCompleteTextView;
+
     private SaleFragmentListener mListener;
     private Double totalAmount = 0.00;
+    SearchedProductListAdapter adapter;
+    private DataBaseRepository dataBaseRepository = new DataBaseRepository();
+    AutoCompleteTextView mAutoCompleteTextView;
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sale, container,false);
+
 
         ImageView addProduct = view.findViewById(R.id.fragment_sale__button_add_product_in_list);
         addProduct.setOnClickListener(new OnAddClicked());
@@ -47,27 +57,40 @@ public class SaleFragment extends LifecycleFragment {
 
         //
 
-        final String[] mProducts = { "Хлеб", "Вода", "Хлопок", "Водка",
-                "Печенье", "Пенсне", "Вобла","Хлор","Перо","Персик" };
 
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
-        mAutoCompleteTextView = (AutoCompleteTextView) view.findViewById(R.id.fragment_sale__autoCompleteTextView_for_search);
-        mAutoCompleteTextView.setAdapter(new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,mProducts));
-        mAutoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long row) {
+        mAutoCompleteTextView = (AutoCompleteTextView)
+                view.findViewById(R.id.fragment_sale__autoCompleteTextView_for_search);
 
-                mAutoCompleteTextView.setCursorVisible(true);
-                Toast.makeText(getActivity(), "Yep! Works!",
-                        Toast.LENGTH_LONG).show();
-                        mAutoCompleteTextView.setText("");
-                        mAutoCompleteTextView.setCursorVisible(false);
-            }
-        });
+        List<Product> products = new ArrayList<>();
+        adapter = new SearchedProductListAdapter
+                (getActivity(),R.layout.search_item_view_holder, products);
+
+        mAutoCompleteTextView.setAdapter(adapter);
+       mAutoCompleteTextView.setOnItemClickListener(onItemClickListener);
 
         return view;
     }
+
+    private AdapterView.OnItemClickListener onItemClickListener =
+            new AdapterView.OnItemClickListener(){
+            Product product;
+
+            @Override
+                public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
+                  product = (Product) parent.getAdapter().getItem(i);
+                  dataBaseRepository.addItemInReceiptDataBase(getActivity(),product);
+                    mAutoCompleteTextView.setText("");
+                    mAutoCompleteTextView.setCursorVisible(false);
+
+                Toast toast = Toast.makeText(getActivity(), "Товар добавлен в чек",
+                        Toast.LENGTH_SHORT);
+
+                toast.setGravity(Gravity.TOP,0,0);
+                toast.show();
+                }
+            };
 
     @Override
     public void onAttach(Context context) {

@@ -16,16 +16,16 @@ import java.util.List;
 public interface ProductDao {
 
 
-    @Query("SELECT * FROM product")
+    @Query("SELECT * FROM Product")
     List<Product> getAll();
 
-    @Query("SELECT * FROM product")
+    @Query("SELECT * FROM Product")
     List<Product> get();
 
-    @Query("SELECT * FROM product where product_name LIKE :productName")
-    Product findByName(String productName);
+    @Query("SELECT * FROM Product WHERE product_name LIKE :productName ")
+    List<Product> findByName(String productName);
 
-    @Query("SELECT COUNT(*) from product")
+    @Query("SELECT COUNT(*) from Product")
     public int countUsers();
 
     @Insert

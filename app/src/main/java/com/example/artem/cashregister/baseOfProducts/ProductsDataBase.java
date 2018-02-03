@@ -55,7 +55,7 @@ public class ProductsDataBase extends AppCompatActivity {
         FloatingActionButton floatButton = findViewById(R.id.activity_products_data_base__floating_button);
         floatButton.setOnClickListener(new OnAddClicked());
 
-        AppDataBase db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "DataBaseOfProducts")
+        AppDataBase db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "dataBase")
                 .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()
                 .build();
