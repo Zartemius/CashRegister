@@ -2,17 +2,14 @@ package com.example.artem.cashregister.sale.fragments.saleProcess;
 
 import android.content.Context;
 import android.os.AsyncTask;
-
 import com.example.artem.cashregister.dataBase.AppDataBase;
 import com.example.artem.cashregister.dataBase.GoodsInReceipt;
 import com.example.artem.cashregister.dataBase.GoodsInReceiptDao;
 import com.example.artem.cashregister.dataBase.Product;
 import com.example.artem.cashregister.dataBase.ProductDao;
-
 import java.util.List;
 
 public class DataBaseRepository  {
-
     private static AppDataBase appDataBase;
     private ProductDao productDao;
     private GoodsInReceiptDao goodsInReceiptDao;
@@ -23,7 +20,6 @@ public class DataBaseRepository  {
         if(productDao == null){
             productDao = DataBaseRepository.appDataBase.productDao();
         }
-
         return productDao.findByName(productName+"%");
     }
 
@@ -38,9 +34,7 @@ public class DataBaseRepository  {
         new addAsyncTask(appDataBase).execute(goodsInReceipt);
     }
 
-
     private static class addAsyncTask extends AsyncTask<GoodsInReceipt,Void,Void> {
-
         private AppDataBase db;
 
         addAsyncTask(AppDataBase appDataBase){

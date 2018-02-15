@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/yellow"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/payment_finished_version_with_money_main_picture"
+        android:layout_width="450dp"
+        android:layout_height="450dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        app:srcCompat="@drawable/bill_with_money"/>
+
+    <TextView
+        android:id="@+id/payment_finished_version_with_money_main_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:text="@string/give_receipt_and_money"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="85dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="120dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/payment_finished_version_with_money_amount_of_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="30sp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/payment_finished_version_with_money_rub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:text="@string/rub"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/payment_finished_version_with_money_button_finish_operation"
+        android:layout_width="550dp"
+        android:layout_height="110dp"
+        android:background="@color/blue"
+        android:layout_gravity="center"
+        android:text="@string/finished_payment_fragment_button_give_money"
+        android:textColor="@color/white"
+        android:textSize="30sp"/>
+
+</LinearLayout>

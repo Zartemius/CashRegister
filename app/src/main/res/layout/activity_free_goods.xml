@@ -95,7 +95,7 @@
           android:layout_marginBottom="15dp"
           android:layout_marginTop="15dp"
           android:background="#2196F3"
-          android:text = "ДОБАВИТЬ В ЧЕК"
+          android:text = "@string/free_goods_layout__button_add_free_product"
           android:textSize="25dp"
           android:textColor="#FFFFFF"/>
 

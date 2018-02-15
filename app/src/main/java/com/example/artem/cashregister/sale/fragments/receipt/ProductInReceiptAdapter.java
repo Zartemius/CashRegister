@@ -2,9 +2,7 @@ package com.example.artem.cashregister.sale.fragments.receipt;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
-
 import com.example.artem.cashregister.dataBase.GoodsInReceipt;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +32,6 @@ public class ProductInReceiptAdapter extends RecyclerView.Adapter<ProductInRecei
     public int getItemCount() {
         return listOfGoods.size();
     }
-
 
     public void addItems(List<GoodsInReceipt> listOfGoods){
         this.listOfGoods = listOfGoods;

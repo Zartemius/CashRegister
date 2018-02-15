@@ -8,6 +8,48 @@
     <string name="drawer_close">Close navigation drawer</string>
     <string name="action_websearch">Web search</string>
     <string name="app_not_available">Sorry, there\'s no web browser available</string>
+    <string name="sale_fragment_confirmation_that_goods_were_added_in_receipt">Товар добавлен в чек</string>
+    <string name="free_goods_title_free_goods_in_receipt">Свободный товар в чек</string>
+    <string name="free_goods_not_enough_information_to_add_goods_in_receipt">Неполные данные для добавления в чек</string>
+    <string name="free_goods_goods_with_price">Товар с ценой</string>
+    <string name="free_goods_goods_was_added_in_receipt"> руб. добавлен в чек</string>
+    <string name="free_goods_goods_goods"> Товар</string>
+    <string name="free_goods_with_price"> c ценой </string>
+    <string name="free_goods_layout__button_add_free_product">ДОБАВИТЬ В ЧЕК</string>
+    <string name="launcher_layout_main_text_view">Welcome to Dreamshop</string>
+    <string name="payment_not_enough_information_to_make_payment"> Неполные данные для совершения расчета </string>
     <string name="hint_free_product_name"> <font size="25">Введите наименование товара</font></string>
     <string name="hint_free_product_price"><font size="25">Введите цену товара</font></string>
+    <string name="hint_amount_for_payment"><font size="25">Сумма к оплате</font></string>
+    <string name="hint_amount_for_payment_of_buyer"><font size="25">Сумма от покупателя</font></string>
+    <string name="payment"> Расчет </string>
+    <string name="payment_layout_button_to_pay">ОПЛАТИТЬ</string>
+    <string name="give_receipt_and_money"> Выдайте чек и сдачу </string>
+    <string name="finished_payment_fragment_button_give_money"> ЧЕК И СДАЧА ВЫДАНЫ </string>
+    <string name="rub"> руб.</string>
+    <string name="activity_payment_toast_message_after_button_clicked">Сумма к оплате превышает сумму от покупателя</string>
+    <string name="finished_payment_without_money_give_receipt"> Выдайте чек</string>
+    <string name="finished_payment_without_money_button_give_receipt"> ЧЕК ВЫДАН</string>
+    <string name="fragment_receipt_toast_if_clicked_on_button_make_calculation"> В чеке отсутствуют товары для совершения расчета </string>
+    <string name="activity_products_data_base_title_name"> Наименование</string>
+    <string name = "product_data_base_layout_name_of_product">Наименование</string>
+    <string name = "product_data_base_layout_name_of_price">Цена</string>
+    <string name = "creation_product_add_product">Добавьте продукт</string>
+    <string name = "creation_product_name_of_product">Название продукта</string>
+    <string name = "creation_product_partNumber">Артикул</string>
+    <string name = "creation_product_price">Цена</string>
+    <string name = "creation_product_add">Добавить</string>
+    <string name = "fragment_receipt_clear">ОЧИСТИТЬ</string>
+    <string name = "fragment_receipt_final_amount">Итого</string>
+    <string name = "fragment_receipt_payment">Расчет</string>
+    <string name = "fragment_sale_layout_search_of_goods">Поиск товаров</string>
+    <string name = "fragment_sale_layout_free_goods_in_receipt">Свободный товар в чек</string>
+    <string name = "fragment_sale_layout_final_amount">Итого</string>
+    <string name = "fragment_sale_layout_payment">Расчет</string>
+    <string name = "navigation_drawer_header_title">Кассир</string>
+    <string name="sale_fragment_plate_name__potato"> Картофель </string>
+    <string name="sale_fragment_plate_name__сucumber"> Огурцы </string>
+    <string name="sale_fragment_plate_name__carrot"> Морковь </string>
+    <string name="sale_fragment_plate_name__cabbage"> Капуста белокачанная </string>
+    <string name="sale_fragment_plate_name__radish"> Редис </string>
 </resources>

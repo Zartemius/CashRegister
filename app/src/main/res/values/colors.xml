@@ -9,5 +9,8 @@
     <color name="base_of_products_status_bar">#4A148C</color>
     <color name="base_activity__tool_bar">#00BCD4</color>
     <color name="base_activity__status_bar">#0097A7</color>
+    <color name="black">#000000</color>
+    <color name="blue">#2196F3</color>
+    <color name="yellow">#FFCA28</color>
 
 </resources>

@@ -1,8 +1,6 @@
-package com.example.artem.cashregister.sale.FreeGoods;
+package com.example.artem.cashregister.sale.freeGoods;
 
 import android.app.Activity;
-import android.graphics.Canvas;
-import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.text.Editable;
@@ -11,17 +9,14 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 public class CustomKeyboardForFreeGoods {
-
-    public final static int CODECLEAR = -1;
-    public final static int COMMA= -4;
+    private final static int CODE_CLEAR = -1;
+    private final static int COMMA= -4;
     private Activity mHostActivity;
     private KeyboardView mKeyboardView;
-
 
     CustomKeyboardForFreeGoods(Activity host, int keyBoardViewId, int keyBoardId){
         mHostActivity = host;
@@ -84,7 +79,7 @@ public class CustomKeyboardForFreeGoods {
             KeyEvent event = new KeyEvent(eventTime, eventTime, KeyEvent.ACTION_DOWN, primaryCode, 0, 0, 0, 0, KeyEvent.FLAG_SOFT_KEYBOARD | KeyEvent.FLAG_KEEP_TOUCH_MODE);
             mHostActivity.dispatchKeyEvent(event);
 
-            if (primaryCode == CODECLEAR) {
+            if (primaryCode == CODE_CLEAR) {
                 View focusCurrent = mHostActivity.getWindow().getCurrentFocus();
                 if (focusCurrent instanceof EditText) {
                     EditText edittext = (EditText) focusCurrent;
@@ -97,7 +92,6 @@ public class CustomKeyboardForFreeGoods {
 
             }
         }
-
 
         @Override
         public void onText(CharSequence charSequence) {
@@ -124,5 +118,4 @@ public class CustomKeyboardForFreeGoods {
 
         }
     };
-
-    }
+}

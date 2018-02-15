@@ -4,13 +4,16 @@
         <group android:checkableBehavior="single">
             <item
                 android:id="@+id/nav_sale"
-                android:title="Продажа" />
+                android:title="Продажа"
+                android:icon="@drawable/menu_item_sale_icon" />
             <item
                 android:id="@+id/nav_goodsBase"
-                android:title="База товаров" />
+                android:title="База товаров"
+                android:icon="@drawable/menu_item_product_base_icon"/>
             <item
                 android:id="@+id/nav_turningOfApplication"
-                android:title="Выключение" />
+                android:title="Смены"
+                android:icon="@drawable/menu_item_shift_icon"/>
 
         </group>
 </menu>

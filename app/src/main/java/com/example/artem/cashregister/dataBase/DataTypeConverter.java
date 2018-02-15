@@ -15,6 +15,5 @@ public class DataTypeConverter{
     public static String backInDataConvert(Double result){
         String resultOfCalculation = "res";
         return resultOfCalculation;
-
     }
 }

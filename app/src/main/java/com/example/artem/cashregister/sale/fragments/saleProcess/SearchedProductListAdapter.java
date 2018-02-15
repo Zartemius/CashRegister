@@ -9,21 +9,17 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.TextView;
-
 import com.example.artem.cashregister.R;
 import com.example.artem.cashregister.dataBase.Product;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class SearchedProductListAdapter extends ArrayAdapter {
-
     private List<Product> dataList;
     private Context mContext;
     private int itemLayout;
     private DataBaseRepository dataBaseRepository = new DataBaseRepository();
-
     private SearchedProductListAdapter.ListFilter listFilter = new SearchedProductListAdapter.ListFilter();
 
     public SearchedProductListAdapter(Context context, int resource, List<Product> productDataList){

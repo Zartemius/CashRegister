@@ -8,6 +8,9 @@
     android:background="#EEEEEE"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="660dp">
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
@@ -24,13 +27,15 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/fragment_sale__products_in_receipt_recycle_view"
         android:background="@android:color/transparent"
-        android:text="ОЧИСТИТЬ"
+        android:text="@string/fragment_receipt_clear"
         android:textSize="20dp"
         android:visibility="gone"
         android:clickable="true"
         android:focusable="true"
         android:textColor="#757575"
         android:gravity="center|top" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,16 +57,23 @@
             android:layout_marginLeft ="20dp"
             android:layout_marginTop="8dp"
             android:textSize="25sp"
-            android:text="Итого"/>
+            android:text="@string/fragment_receipt_final_amount"/>
         <TextView
             android:id="@+id/fragment_sale__products_in_receipt_result_figure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="5dp"
             android:layout_marginTop="8dp"
             android:textStyle="bold"
             android:textColor="#000000"
-            android:textSize="35sp" />
+            android:textSize="35sp"
+            />
+
+         <ImageView
+             android:layout_width="38dp"
+             android:layout_height="53dp"
+             android:layout_marginRight="20dp"
+             app:srcCompat="@drawable/ruble" />
 
      </LinearLayout>
 
@@ -72,7 +84,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:background="#2196F3"
-            android:text = "Расчет"
+            android:text = "@string/fragment_receipt_payment"
             android:textSize="25sp"
             android:textColor="#FFFFFF"/>
 

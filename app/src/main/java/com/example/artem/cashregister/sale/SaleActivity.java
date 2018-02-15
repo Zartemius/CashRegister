@@ -2,6 +2,7 @@ package com.example.artem.cashregister.sale;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -14,14 +15,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+
 import com.example.artem.cashregister.R;
-import com.example.artem.cashregister.sale.fragments.receipt.ReceiptFragment;
 import com.example.artem.cashregister.baseOfProducts.ProductsDataBase;
+import com.example.artem.cashregister.sale.fragments.receipt.ReceiptFragment;
 import com.example.artem.cashregister.sale.fragments.saleProcess.SaleFragment;
 
 
-public class SaleActivity extends AppCompatActivity implements
-        SaleFragment.SaleFragmentListener,ReceiptFragment.ReceiptFragmentListener{
+public class SaleActivity extends AppCompatActivity implements SaleFragment.KindOfCalculationInSale,
+        ReceiptFragment.KindOfCalculationInReceipt {
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -29,13 +33,20 @@ public class SaleActivity extends AppCompatActivity implements
     private CharSequence mTitle;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private boolean resultOfCalculation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_sale);
+        if(Build.VERSION.SDK_INT >=21) {
+            Window window = this.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(R.color.green));
+        }
 
+        setContentView(R.layout.activity_sale);
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_sale__toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -46,9 +57,8 @@ public class SaleActivity extends AppCompatActivity implements
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
         NavigationView navigationView = findViewById(R.id.navigation);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -91,7 +101,6 @@ public class SaleActivity extends AppCompatActivity implements
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -130,6 +139,16 @@ public class SaleActivity extends AppCompatActivity implements
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void setKindOfCalculation(boolean result){
+        resultOfCalculation = result;
+    }
+
+    @Override
+    public boolean getKindOfCalculation(){
+        return resultOfCalculation;
     }
 
 }

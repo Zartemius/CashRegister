@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewStub;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -19,7 +20,7 @@ import com.example.artem.cashregister.R;
 import com.example.artem.cashregister.sale.SaleActivity;
 import com.example.artem.cashregister.baseOfProducts.ProductsDataBase;
 
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity{
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -31,18 +32,16 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
 
-        if(Build.VERSION.SDK_INT >=21){
-            Window window = this.getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(this.getResources().getColor(R.color.base_activity__status_bar));
-        }
+        ViewStub viewStub = findViewById(R.id.activity_base_view_stub);
+        viewStub.setLayoutResource(getLayoutId());
+        viewStub.inflate();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_base__toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(getToolBar());
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         NavigationView navigationView = findViewById(R.id.navigation);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -108,6 +107,10 @@ public class BaseActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    protected abstract int getLayoutId();
+
+    protected abstract int getToolBar();
 }
 
 

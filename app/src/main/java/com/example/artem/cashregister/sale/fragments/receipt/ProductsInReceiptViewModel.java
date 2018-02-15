@@ -4,17 +4,13 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
-
 import com.example.artem.cashregister.dataBase.AppDataBase;
 import com.example.artem.cashregister.dataBase.GoodsInReceipt;
-
 import java.util.List;
-
 
 public class ProductsInReceiptViewModel extends AndroidViewModel {
 
     private final LiveData<List<GoodsInReceipt>> receiptProductsList;
-
     private AppDataBase appDataBase;
 
     public ProductsInReceiptViewModel(Application application) {
@@ -33,7 +29,6 @@ public class ProductsInReceiptViewModel extends AndroidViewModel {
     public void deleteAllGoodsFromReceipt(){
         new addAsyncTask(appDataBase).execute();
     }
-
 
     private static class addAsyncTask extends AsyncTask<GoodsInReceipt,Void,Void> {
 

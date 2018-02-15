@@ -1,6 +1,5 @@
 package com.example.artem.cashregister.dataBase;
 
-
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
@@ -57,5 +56,4 @@ public class Product {
     public void setCode(String code){
         this.code = code;
     }
-
 }

@@ -69,5 +69,4 @@ public class GoodsInReceipt {
     public String getTotalAmount(){return totalAmount;}
 
     public void setTotalAmount(String totalAmount){this.totalAmount = totalAmount;}
-
 }

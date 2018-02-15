@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
-        List<Product> products = new ArrayList<>();
+        private List<Product> products = new ArrayList<>();
         private String name;
         private String price;
         private String code;
@@ -36,5 +36,4 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         public int getItemCount() {
         return products.size();
         }
-
 }

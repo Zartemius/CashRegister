@@ -1,10 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    tools:context=".sale.payment.Payment">
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
+    <FrameLayout
+        android:id="@+id/activity_payment__container_for_fragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp">
+    </FrameLayout>
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/activity_payment__toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#4CAF50"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/activity_payment___text_input_layout_product_name"
+        android:theme="@style/EditTextHint"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:textColor="#FFFFFF"
+        app:hintTextAppearance="@style/HintLabel"
+        android:background="#4CAF50">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/activity_payment__amount_for_payment"
+            android:background="#4CAF50"
+            android:layout_marginRight="23dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:textColor="#FFFFFF"
+            android:gravity="right|center"
+            android:textColorHint="@color/white"
+            android:textSize="55sp"
+            android:hint="@string/hint_amount_for_payment" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:theme="@style/EditTextHint"
+        android:textColor="#FFFFFF"
+        app:hintTextAppearance="@style/HintLabel"
+        android:background="#4CAF50">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/activity_payment__amount_received_from_buyer"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginRight="23dp"
+            android:layout_marginTop="10dp"
+            android:background="#4CAF50"
+            android:inputType="numberDecimal"
+            android:textColor="#FFFFFF"
+            android:textSize="55sp"
+            android:gravity="right|center"
+            android:hint="@string/hint_amount_for_payment_of_buyer"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:layout_height="465dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="#F5F5F5">
+
+        <android.inputmethodservice.KeyboardView
+            android:layout_marginTop="15dp"
+            android:id="@+id/activity_payment__keyboardView"
+            android:background="#F5F5F5"
+            android:shadowRadius="0.0"
+            android:keyBackground="@android:color/transparent"
+            android:keyTextSize="45sp"
+            android:keyTextColor="#000000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="110dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="#FFFFFF">
+
+        <Button
+            android:id="@+id/activity_payment__button_to_finish_payment_operation"
+            android:layout_width="540dp"
+            android:layout_height="91dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="15dp"
+            android:background="#2196F3"
+            android:text = "@string/payment_layout_button_to_pay"
+            android:textSize="30dp"
+            android:textColor="#FFFFFF"/>
+
+        <ImageButton
+            android:id="@+id/activity_payment___credit_card_view"
+            android:background="#FFFFFF"
+            android:layout_width="163dp"
+            android:layout_height="91dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:elevation="10dp"
+            app:srcCompat="@drawable/card"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -21,7 +21,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Добавьте продукт"
+        android:text="@string/creation_product_add_product"
         android:textSize="23sp"/>
 
     <android.support.design.widget.TextInputLayout
@@ -32,7 +32,9 @@
             android:id="@+id/creation_product__add_product_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Название продукта"/>
+            android:textSize="30sp"
+            app:hintTextAppearance="@style/HintLabel"
+            android:hint="@string/creation_product_name_of_product"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -43,8 +45,10 @@
         <android.support.design.widget.TextInputEditText
             android:id="@+id/creation_product__add_product_code"
             android:layout_width="match_parent"
+            android:textSize="30sp"
             android:layout_height="wrap_content"
-            android:hint="Артикул"/>
+            app:hintTextAppearance="@style/HintLabel"
+            android:hint="@string/creation_product_partNumber"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -56,17 +60,20 @@
             android:id="@+id/creation_product__add_product_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="Цена"/>
+            app:hintTextAppearance="@style/HintLabel"
+            android:textSize="30sp"
+            android:inputType="numberDecimal"
+            android:hint="@string/creation_product_price"/>
 
     </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/creation_product__add_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="70dp"
         android:layout_marginTop="15dp"
-        android:text="Добавить"/>
+        android:textSize="23sp"
+        android:text="@string/creation_product_add"/>
 
     </LinearLayout>
 

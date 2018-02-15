@@ -6,15 +6,11 @@ import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.database.Cursor;
-
 import com.example.artem.cashregister.dataBase.Product;
-
 import java.util.List;
-
 
 @Dao
 public interface ProductDao {
-
 
     @Query("SELECT * FROM Product")
     List<Product> getAll();
@@ -33,5 +29,4 @@ public interface ProductDao {
 
     @Delete
     public void delete (Product product);
-
 }

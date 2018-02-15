@@ -10,44 +10,44 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".baseActivity.BaseActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".sale.SaleActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".baseOfProducts.ProductsDataBase"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".baseOfProducts.ProductCreation"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".baseOfProducts.ProductsDataBase" />
+        </activity>
         <activity
-            android:name=".sale.FreeGoods.FreeGoods"
+            android:name=".sale.freeGoods.FreeGoods"
             android:parentActivityName=".sale.SaleActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="sale.SaleActivity" />
         </activity>
-        <activity android:name=".sale.payment.Payment"></activity>
+        <activity android:name=".sale.payment.Payment"
+                  android:parentActivityName=".sale.SaleActivity"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="sale.SaleActivity" />
+        </activity>
+
+        <activity android:name=".baseActivity.LauncherActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>
